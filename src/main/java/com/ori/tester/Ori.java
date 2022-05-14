@@ -1,3 +1,5 @@
+package com.ori.tester;
+
 public class Ori {
 
     public Ori() {
