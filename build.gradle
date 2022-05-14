@@ -18,14 +18,17 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    testLogging {
-        afterSuite { desc, result ->
-            if (!desc.parent) {
-                def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} passed, ${result.failedTestCount} failed, ${result.skippedTestCount} skipped)"
-                def startItem = '|  ', endItem = '  |'
-                def repeatLength = startItem.length() + output.length() + endItem.length()
-                println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
-            }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'me.yoogle' // groupId 추가
+            artifactId = 'YoogleManLib' // artifactId 추가
+            version = '1.0' // 버전 정보 추가
+
+            from components.java
         }
     }
 }
+
